@@ -8,7 +8,6 @@
 	//friend Tetromino;
 	public:
 		GameBoard();
-		~GameBoard();
 		
 		void toggleCell(int,int);
 		void toggleCell(int,int,bool);

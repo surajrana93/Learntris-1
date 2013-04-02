@@ -20,7 +20,6 @@ GameBoard::GameBoard()
 				m_grid[rows][cols] = false;
 		}
 }
-GameBoard::~GameBoard(){}
 
 /**
  * @brief Toggles specified cell

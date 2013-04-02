@@ -19,8 +19,7 @@
 	 toggleGridLoc();
  }
  
- Tetromino::~Tetromino(){}
- 
+
  void Tetromino::updateGridLoc()
  {
 	 for(int i = 1; i < 4; i++) //Checks current facing and sets gridLoc up accordingly
@@ -57,11 +56,6 @@
  
  void Tetromino::funcGravity()
  {
-	 /*for(int i = 0; i < 4; i++)
-	 {
-		 m_gridLocs[i].col--;
-	 }*/
-	 
 	 m_gridLocs[0].row--;
 	 updateGridLoc();
  }
@@ -114,9 +108,9 @@
 			m_gridLocs[0].col += 1;
 			break;
 		case LEFT:
-			m_facing = UP;
-			m_gridLocs[0].row -= 2;
-			m_gridLocs[0].col += 2;
+			m_facing = DOWN;
+			m_gridLocs[0].row += 2;
+			m_gridLocs[0].col -= 2;
 			break;
 		case DOWN:
 			m_facing = RIGHT;
@@ -125,8 +119,8 @@
 			break;
 		case RIGHT:
 			m_facing = UP;
-			m_gridLocs[0].row +=2;
-			m_gridLocs[0].col -=2;
+			m_gridLocs[0].row -=2;
+			m_gridLocs[0].col +=2;
 			break;
 	 }
 	 updateGridLoc();

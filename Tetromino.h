@@ -18,7 +18,6 @@
 			 DOWN
 		 };
 		Tetromino(GameBoard* grid);
-		~Tetromino();
 		
 		void updateGridLoc();
 		void funcGravity();
@@ -43,13 +42,35 @@
 	inline Tetromino::facing operator++(Tetromino::facing &sub,int)
 	{
 		Tetromino::facing oldFacing = sub;
-		sub = (Tetromino::facing)(sub + 1);
+		//sub = (Tetromino::facing)(sub + 1);
+		//return oldFacing;
+		switch(oldFacing)
+		{
+			case 0:
+			case 1:
+			case 2:
+				sub = (Tetromino::facing)(sub + 1);
+				break;
+			case 3:
+				sub = (Tetromino::facing)(0);
+				break;
+		}
 		return oldFacing;
 	}
 	
 	inline Tetromino::facing operator--(Tetromino::facing &sub,int)
-	{
+	{	
 		Tetromino::facing oldFacing = sub;
-		sub = (Tetromino::facing)(sub - 1);
+		switch(oldFacing)
+		{
+			case 3:
+			case 1:
+			case 2:
+				sub = (Tetromino::facing)(sub - 1);
+				break;
+			case 0:
+				sub = (Tetromino::facing)(3);
+				break;
+		}
 		return oldFacing;
 	}
