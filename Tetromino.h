@@ -5,7 +5,6 @@
  * @todo Implement canRotate()
  */
  #include "GameBoard.h"
- using namespace std;
 
  
  class Tetromino
@@ -33,8 +32,12 @@
 		
 	private:
 		facing m_facing;
-		int m_gridLoc[4][2];
 		GameBoard* m_gameBoard;
+		struct gridLocs
+		{
+			int row, col;
+		};
+		gridLocs m_gridLocs[4];
  };
  
 	inline Tetromino::facing operator++(Tetromino::facing &sub,int)

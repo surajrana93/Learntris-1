@@ -10,10 +10,11 @@
  
  Tetromino::Tetromino(GameBoard *grid)
  {
+	 
 	 m_gameBoard = grid;
 	 m_facing = LEFT;
-	 m_gridLoc[0][0] = 22;
-	 m_gridLoc[0][1] = 6;
+	 m_gridLocs[0].row = 22;
+	 m_gridLocs[0].col = 6;
 	 updateGridLoc();
 	 toggleGridLoc();
  }
@@ -27,20 +28,20 @@
 		 switch(m_facing)
 		 {
 			 case RIGHT:
-				m_gridLoc[i][0] = m_gridLoc[0][0];
-				m_gridLoc[i][1] = m_gridLoc[0][1] + i;
+				m_gridLocs[i].row = m_gridLocs[0].row;
+				m_gridLocs[i].col = m_gridLocs[0].col + i;
 				break;
 			 case DOWN:
-				m_gridLoc[i][0] = m_gridLoc[0][0] - i;
-				m_gridLoc[i][1] = m_gridLoc[0][1];
+				m_gridLocs[i].row = m_gridLocs[0].row - i;
+				m_gridLocs[i].col = m_gridLocs[0].col;
 				break;
 			 case LEFT:
-				m_gridLoc[i][0] = m_gridLoc[0][0];
-				m_gridLoc[i][1] = m_gridLoc[0][1] - i;
+				m_gridLocs[i].row = m_gridLocs[0].row;
+				m_gridLocs[i].col = m_gridLocs[0].col - i;
 				break;
 			 case UP:
-				m_gridLoc[i][0] = m_gridLoc[0][0] + i;
-				m_gridLoc[i][1] = m_gridLoc[0][1];
+				m_gridLocs[i].row = m_gridLocs[0].row + i;
+				m_gridLocs[i].col = m_gridLocs[0].col;
 				break;
 		 }
 	 }
@@ -50,7 +51,7 @@
  {
 	 for(int i = 0; i < 4; i++)
 	 {
-		 m_gameBoard->toggleCell((m_gridLoc[i][0]),(m_gridLoc[i][1]));
+		 m_gameBoard->toggleCell((m_gridLocs[i].row),(m_gridLocs[i].col));
 	 }
  }
  
@@ -58,10 +59,10 @@
  {
 	 /*for(int i = 0; i < 4; i++)
 	 {
-		 m_gridLoc[i][1]--;
+		 m_gridLocs[i].col--;
 	 }*/
 	 
-	 m_gridLoc[0][0]--;
+	 m_gridLocs[0].row--;
 	 updateGridLoc();
  }
  
@@ -79,23 +80,23 @@
 	 {
 		case LEFT:
 			m_facing = UP;
-			m_gridLoc[0][0] -= 1;
-			m_gridLoc[0][1] -= 1;
+			m_gridLocs[0].row -= 1;
+			m_gridLocs[0].col -= 1;
 			break;
 		case UP:
 			m_facing = RIGHT;
-			m_gridLoc[0][0] += 2;
-			m_gridLoc[0][1] -= 2;
+			m_gridLocs[0].row += 2;
+			m_gridLocs[0].col -= 2;
 			break;
 		case RIGHT:
 			m_facing = DOWN;
-			m_gridLoc[0][0] += 1;
-			m_gridLoc[0][1] += 1;
+			m_gridLocs[0].row += 1;
+			m_gridLocs[0].col += 1;
 			break;
 		case DOWN:
 			m_facing = LEFT;
-			m_gridLoc[0][0] -=2;
-			m_gridLoc[0][1] +=2;
+			m_gridLocs[0].row -=2;
+			m_gridLocs[0].col +=2;
 			break;
 	 }
 	 updateGridLoc();
@@ -109,23 +110,23 @@
 	 {
 		case UP:
 			m_facing = LEFT;
-			m_gridLoc[0][0] += 1;
-			m_gridLoc[0][1] += 1;
+			m_gridLocs[0].row += 1;
+			m_gridLocs[0].col += 1;
 			break;
 		case LEFT:
 			m_facing = UP;
-			m_gridLoc[0][0] -= 2;
-			m_gridLoc[0][1] += 2;
+			m_gridLocs[0].row -= 2;
+			m_gridLocs[0].col += 2;
 			break;
 		case DOWN:
 			m_facing = RIGHT;
-			m_gridLoc[0][0] -= 1;
-			m_gridLoc[0][1] -= 1;
+			m_gridLocs[0].row -= 1;
+			m_gridLocs[0].col -= 1;
 			break;
 		case RIGHT:
 			m_facing = UP;
-			m_gridLoc[0][0] +=2;
-			m_gridLoc[0][1] -=2;
+			m_gridLocs[0].row +=2;
+			m_gridLocs[0].col -=2;
 			break;
 	 }
 	 updateGridLoc();
@@ -139,8 +140,8 @@
  bool Tetromino::canRotate(bool clockwise)
  {
 	 Tetromino ghost(m_gameBoard);
-	 ghost.m_gridLoc[0][0] = m_gridLoc[0][0];
-	 ghost.m_gridLoc[1][1] = m_gridLoc[1][1];
+	 ghost.m_gridLocs[0].row = m_gridLocs[0].row;
+	 ghost.m_gridLocs[1].col = m_gridLocs[1].col;
 	 ghost.updateGridLoc();
 	 if(clockwise){ghost.rotateClockwise();}
 	 else {ghost.rotateCounterClockwise();}
@@ -148,11 +149,11 @@
 	 
 	 for(int i = 0; i < 4; i++)
 	 {
-		 if(m_gameBoard->cell(ghost.m_gridLoc[i][0],m_gridLoc[i][1]))
+		 if(m_gameBoard->cell(ghost.m_gridLocs[i].row,m_gridLocs[i].col))
 		 {
 			 return false;
 		 }
-		 else if(!(23 >= m_gridLoc[i][0] >= 0) || !(9 >= m_gridLoc[i][1] >= 0))
+		 else if(!(23 >= m_gridLocs[i].row >= 0) || !(9 >= m_gridLocs[i].col >= 0))
 		 {
 			 return false;
 		 }
