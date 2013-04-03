@@ -17,6 +17,13 @@
 			 RIGHT,
 			 DOWN
 		 };
+		 enum rotateStatus
+		 {
+			 FALSE = 0,
+			 TRUE,
+			 BUMP
+		 };
+		 
 		Tetromino(GameBoard* grid);
 		
 		void updateGridLoc();
@@ -26,8 +33,15 @@
 		void toggleGridLoc();
 		bool canRotate(bool); //Not yet implemented
 		
+		rotateStatus checkClockwise();
+		rotateStatus checkCounterClockwise();
 		void rotateClockwise();
+		void rotateClockwise(int);
 		void rotateCounterClockwise();
+		void rotateCounterClockwise(int);
+		
+		void moveLeft(int);
+		void moveRight(int);
 		
 	private:
 		facing m_facing;

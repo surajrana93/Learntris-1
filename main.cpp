@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 //#include "GameBoard.h"
-#include "Tetromino.h"
+#include "LearntrisTests.h"
 
 using namespace std;
 
@@ -13,7 +13,11 @@ int main(int argc, char **argv)
 	
 	cout << endl << endl << "Initializing Tetromino.\n";
 	Tetromino tester(&gameBoard);
-	gameBoard.printBoard();
+	
+	ConsoleMenu menu;
+	menu.loopMenu(gameBoard,tester);
+	
+	/*gameBoard.printBoard();
 	
 	cout << endl << "Doing gravity." << endl;
 	tester.doGravity();

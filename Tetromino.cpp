@@ -127,6 +127,62 @@
 	 toggleGridLoc(); //Turns new cells ON
  }
  
+  void Tetromino::rotateClockwise(int noToggle)
+ {
+	 switch(m_facing)
+	 {
+		case LEFT:
+			m_facing = UP;
+			m_gridLocs[0].row -= 1;
+			m_gridLocs[0].col -= 1;
+			break;
+		case UP:
+			m_facing = RIGHT;
+			m_gridLocs[0].row += 2;
+			m_gridLocs[0].col -= 2;
+			break;
+		case RIGHT:
+			m_facing = DOWN;
+			m_gridLocs[0].row += 1;
+			m_gridLocs[0].col += 1;
+			break;
+		case DOWN:
+			m_facing = LEFT;
+			m_gridLocs[0].row -=2;
+			m_gridLocs[0].col +=2;
+			break;
+	 }
+	 updateGridLoc();
+ }
+ 
+ void Tetromino::rotateCounterClockwise(int noToggle)
+  {
+	 switch(m_facing)
+	 {
+		case UP:
+			m_facing = LEFT;
+			m_gridLocs[0].row += 1;
+			m_gridLocs[0].col += 1;
+			break;
+		case LEFT:
+			m_facing = DOWN;
+			m_gridLocs[0].row += 2;
+			m_gridLocs[0].col -= 2;
+			break;
+		case DOWN:
+			m_facing = RIGHT;
+			m_gridLocs[0].row -= 1;
+			m_gridLocs[0].col -= 1;
+			break;
+		case RIGHT:
+			m_facing = UP;
+			m_gridLocs[0].row -=2;
+			m_gridLocs[0].col +=2;
+			break;
+	 }
+	 updateGridLoc();
+ }
+ 
  /**
   * @brief Returns true if piece can rotate
   * @param clockwise Boolean. Set true if you want to check clockwise rotation; false for counter-clockwise.
@@ -134,12 +190,12 @@
  bool Tetromino::canRotate(bool clockwise)
  {
 	 Tetromino ghost(m_gameBoard);
+	 
 	 ghost.m_gridLocs[0].row = m_gridLocs[0].row;
 	 ghost.m_gridLocs[1].col = m_gridLocs[1].col;
 	 ghost.updateGridLoc();
-	 if(clockwise){ghost.rotateClockwise();}
-	 else {ghost.rotateCounterClockwise();}
-	 ghost.updateGridLoc();
+	 if(clockwise){ghost.rotateClockwise(1);}
+	 else {ghost.rotateCounterClockwise(1);}
 	 
 	 for(int i = 0; i < 4; i++)
 	 {
@@ -154,3 +210,56 @@
 	 }
 	 return true;
  }
+
+Tetromino::rotateStatus Tetromino::checkClockwise()
+{
+	Tetromino ghost(m_gameBoard);					//Initialize a dummy Tetromino and use its positions resulting from
+	ghost.m_facing = m_facing;						//a variety of operations to determine rotateStatus.
+	ghost.m_gridLocs[0].row = m_gridLocs[0].row;
+	ghost.m_gridLocs[0].col = m_gridLocs[0].col;
+	ghost.rotateClockwise(1);			//ghost is now located where Tetromino would be if it rotated clockwise.
+	for(int i = 0; i < 4; i++)
+	{
+		if(m_gameBoard->cell(ghost.m_gridLocs[i].row,ghost.m_gridLocs[i].col)){return FALSE;}
+	}
+	for(int i = 0; i < 4; i++)
+	{
+		if(!(0 <= ghost.m_gridLocs[i].row <= 9)){return BUMP;}
+	}
+	return TRUE;
+}
+
+Tetromino::rotateStatus Tetromino::checkCounterClockwise()
+{
+	Tetromino ghost(m_gameBoard);					//Initialize a dummy Tetromino and use its positions resulting from
+	ghost.m_facing = m_facing;						//a variety of operations to determine rotateStatus.
+	ghost.m_gridLocs[0].row = m_gridLocs[0].row;
+	ghost.m_gridLocs[0].col = m_gridLocs[0].col;
+	ghost.rotateCounterClockwise(1);
+	ghost.updateGridLoc();							//ghost is now located where Tetromino would be if it rotated counter-clockwise.
+	for(int i = 0; i < 4; i++)
+	{
+		if(m_gameBoard->cell(ghost.m_gridLocs[i].row,ghost.m_gridLocs[i].col)){return FALSE;}
+	}
+	for(int i = 0; i < 4; i++)
+	{
+		if(!(0 <= ghost.m_gridLocs[i].row <= 9)){return BUMP;}
+	}
+	return TRUE;
+}
+
+void Tetromino::moveLeft(int n)
+{
+	toggleGridLoc();
+	m_gridLocs[0].col -= n;
+	updateGridLoc();
+	toggleGridLoc();
+}
+
+void Tetromino::moveRight(int n)
+{
+	toggleGridLoc();
+	m_gridLocs[0].col += n;
+	updateGridLoc();
+	toggleGridLoc();
+}
