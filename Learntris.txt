@@ -1,1 +1,1 @@
-./Debug/main.o ./Debug/GameBoard.o ./Debug/GameBoardDiag.o ./Debug/Tetromino.o
+./Debug/main.o ./Debug/GameBoard.o ./Debug/GameBoardDiag.o ./Debug/Tetromino.o ./Debug/LearntrisTests.o

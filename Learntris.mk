@@ -58,7 +58,7 @@ CFLAGS   :=  -g -O0 -Wall $(Preprocessors)
 ## User defined environment variables
 ##
 CodeLiteDir:=/Applications/CodeLite.app/Contents/SharedSupport/
-Objects=$(IntermediateDirectory)/main$(ObjectSuffix) $(IntermediateDirectory)/GameBoard$(ObjectSuffix) $(IntermediateDirectory)/GameBoardDiag$(ObjectSuffix) $(IntermediateDirectory)/Tetromino$(ObjectSuffix) 
+Objects=$(IntermediateDirectory)/main$(ObjectSuffix) $(IntermediateDirectory)/GameBoard$(ObjectSuffix) $(IntermediateDirectory)/GameBoardDiag$(ObjectSuffix) $(IntermediateDirectory)/Tetromino$(ObjectSuffix) $(IntermediateDirectory)/LearntrisTests$(ObjectSuffix) 
 
 ##
 ## Main Build Targets 
@@ -113,6 +113,14 @@ $(IntermediateDirectory)/Tetromino$(DependSuffix): Tetromino.cpp
 $(IntermediateDirectory)/Tetromino$(PreprocessSuffix): Tetromino.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Tetromino$(PreprocessSuffix) "/Users/Chance/Dropbox/Code/LearntrisAgain/Learntris/Tetromino.cpp"
 
+$(IntermediateDirectory)/LearntrisTests$(ObjectSuffix): LearntrisTests.cpp $(IntermediateDirectory)/LearntrisTests$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/Users/Chance/Dropbox/Code/LearntrisAgain/Learntris/LearntrisTests.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/LearntrisTests$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/LearntrisTests$(DependSuffix): LearntrisTests.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/LearntrisTests$(ObjectSuffix) -MF$(IntermediateDirectory)/LearntrisTests$(DependSuffix) -MM "/Users/Chance/Dropbox/Code/LearntrisAgain/Learntris/LearntrisTests.cpp"
+
+$(IntermediateDirectory)/LearntrisTests$(PreprocessSuffix): LearntrisTests.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/LearntrisTests$(PreprocessSuffix) "/Users/Chance/Dropbox/Code/LearntrisAgain/Learntris/LearntrisTests.cpp"
+
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
 ##
@@ -131,6 +139,9 @@ clean:
 	$(RM) $(IntermediateDirectory)/Tetromino$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/Tetromino$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/Tetromino$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/LearntrisTests$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/LearntrisTests$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/LearntrisTests$(PreprocessSuffix)
 	$(RM) $(OutputFile)
 	$(RM) "/Users/Chance/Dropbox/Code/LearntrisAgain/.build-debug/Learntris"
 

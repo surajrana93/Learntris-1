@@ -94,5 +94,7 @@
     <File Name="GameBoardDiag.cpp"/>
     <File Name="Tetromino.h"/>
     <File Name="Tetromino.cpp"/>
+    <File Name="LearntrisTests.cpp"/>
+    <File Name="LearntrisTests.h"/>
   </VirtualDirectory>
 </CodeLite_Project>

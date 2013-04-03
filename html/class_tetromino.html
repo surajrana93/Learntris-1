@@ -84,6 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_tetromino-members.html">List of all members</a>  </div>
@@ -100,12 +101,20 @@ Public Types</h2></td></tr>
 <b>DOWN</b>
  }</td></tr>
 <tr class="separator:a38fec7a15a662ddf71f58ad923f7f6b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac23600fa75944ab28946a9d4fe9d3259"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>rotateStatus</b> { <b>FALSE</b> = 0, 
+<b>TRUE</b>, 
+<b>BUMP</b>
+ }</td></tr>
+<tr class="separator:ac23600fa75944ab28946a9d4fe9d3259"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1e693a4b99478302e7c7071667512e5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1e693a4b99478302e7c7071667512e5f"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Tetromino</b> (<a class="el" href="class_game_board.html">GameBoard</a> *grid)</td></tr>
 <tr class="separator:a1e693a4b99478302e7c7071667512e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7be393128fb83186dbf63279f5200387"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7be393128fb83186dbf63279f5200387"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Tetromino</b> (<a class="el" href="class_game_board.html">GameBoard</a> *grid, int, int)</td></tr>
+<tr class="separator:a7be393128fb83186dbf63279f5200387"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe7074d0ac3811a17e567f1f810dcfef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe7074d0ac3811a17e567f1f810dcfef"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>updateGridLoc</b> ()</td></tr>
 <tr class="separator:abe7074d0ac3811a17e567f1f810dcfef"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,12 +133,30 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>toggleGridLoc</b> ()<
 <tr class="memitem:a1fa856eee0e62418fdc430db4a1318ba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#a1fa856eee0e62418fdc430db4a1318ba">canRotate</a> (bool)</td></tr>
 <tr class="memdesc:a1fa856eee0e62418fdc430db4a1318ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if piece can rotate.  <a href="#a1fa856eee0e62418fdc430db4a1318ba">More...</a><br/></td></tr>
 <tr class="separator:a1fa856eee0e62418fdc430db4a1318ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d4927d722d5de5a8aac1de8d8a0e713"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d4927d722d5de5a8aac1de8d8a0e713"></a>
+rotateStatus&#160;</td><td class="memItemRight" valign="bottom"><b>checkClockwise</b> ()</td></tr>
+<tr class="separator:a1d4927d722d5de5a8aac1de8d8a0e713"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b64a4a62805b540378e222743aa6184"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b64a4a62805b540378e222743aa6184"></a>
+rotateStatus&#160;</td><td class="memItemRight" valign="bottom"><b>checkCounterClockwise</b> ()</td></tr>
+<tr class="separator:a9b64a4a62805b540378e222743aa6184"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e2a858e789658cc97379e76359cc159"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e2a858e789658cc97379e76359cc159"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateClockwise</b> ()</td></tr>
 <tr class="separator:a2e2a858e789658cc97379e76359cc159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09ee6f49c44090dfd3004b484d213741"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09ee6f49c44090dfd3004b484d213741"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateClockwise</b> (int)</td></tr>
+<tr class="separator:a09ee6f49c44090dfd3004b484d213741"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa839412e0fe12dc1cebd0d4b0fe04842"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa839412e0fe12dc1cebd0d4b0fe04842"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateCounterClockwise</b> ()</td></tr>
 <tr class="separator:aa839412e0fe12dc1cebd0d4b0fe04842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b7d7cab0aa875d99f4bf0f65eb05ac8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b7d7cab0aa875d99f4bf0f65eb05ac8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateCounterClockwise</b> (int)</td></tr>
+<tr class="separator:a0b7d7cab0aa875d99f4bf0f65eb05ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a537bd1d8883cbec35a64a7ad3f5949be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a537bd1d8883cbec35a64a7ad3f5949be"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>moveLeft</b> (int)</td></tr>
+<tr class="separator:a537bd1d8883cbec35a64a7ad3f5949be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4a4583b8408caac7bc26cbf5ebaec2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4a4583b8408caac7bc26cbf5ebaec2b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>moveRight</b> (int)</td></tr>
+<tr class="separator:af4a4583b8408caac7bc26cbf5ebaec2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a1fa856eee0e62418fdc430db4a1318ba"></a>
@@ -163,7 +190,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateCounterClockwis
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 2 2013 10:24:05 for Testris by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 2 2013 20:27:34 for Testris by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

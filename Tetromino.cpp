@@ -19,6 +19,15 @@
 	 toggleGridLoc();
  }
  
+  Tetromino::Tetromino(GameBoard *grid, int row, int col)
+ {
+	 
+	 m_gameBoard = grid;
+	 m_facing = LEFT;
+	 m_gridLocs[0].row = row;
+	 m_gridLocs[0].col = col;
+	 updateGridLoc();
+ }
 
  void Tetromino::updateGridLoc()
  {
@@ -213,28 +222,24 @@
 
 Tetromino::rotateStatus Tetromino::checkClockwise()
 {
-	Tetromino ghost(m_gameBoard);					//Initialize a dummy Tetromino and use its positions resulting from
-	ghost.m_facing = m_facing;						//a variety of operations to determine rotateStatus.
-	ghost.m_gridLocs[0].row = m_gridLocs[0].row;
-	ghost.m_gridLocs[0].col = m_gridLocs[0].col;
-	ghost.rotateClockwise(1);			//ghost is now located where Tetromino would be if it rotated clockwise.
-	for(int i = 0; i < 4; i++)
+	Tetromino ghost(m_gameBoard,m_gridLocs[0].row,m_gridLocs[0].col);	//Initialize a "ghost" Tetromino to test conditions
+	ghost.m_facing = m_facing; //Set ghost's facing to Tetromino's facing
+	ghost.rotateClockwise(1); //Perform the rotation
+	for(int i = 0; i < 4; i++) //Iterate through the four component cells of the Tetromino
 	{
-		if(m_gameBoard->cell(ghost.m_gridLocs[i].row,ghost.m_gridLocs[i].col)){return FALSE;}
+		if(m_gameBoard->cell(ghost.m_gridLocs[i].row, ghost.m_gridLocs[i].col)){return FALSE;} //and if those gameBoard cells are occupied, return FALSE
 	}
-	for(int i = 0; i < 4; i++)
+	for(int i = 0; i < 4; i++) //Iterate through same
 	{
-		if(!(0 <= ghost.m_gridLocs[i].row <= 9)){return BUMP;}
+		if(!((0 <= ghost.m_gridLocs[i].col) && (ghost.m_gridLocs[i].col <= 9))){return BUMP;} //and if those cells are out of bounds, return BUMP (cue wallbump)
 	}
-	return TRUE;
+	return TRUE; //if control gets this far, rotation is free and clear. return TRUE.
 }
 
 Tetromino::rotateStatus Tetromino::checkCounterClockwise()
 {
-	Tetromino ghost(m_gameBoard);					//Initialize a dummy Tetromino and use its positions resulting from
+	Tetromino ghost(m_gameBoard,m_gridLocs[0].row,m_gridLocs[0].col);	//Initialize a dummy Tetromino and use its positions resulting from
 	ghost.m_facing = m_facing;						//a variety of operations to determine rotateStatus.
-	ghost.m_gridLocs[0].row = m_gridLocs[0].row;
-	ghost.m_gridLocs[0].col = m_gridLocs[0].col;
 	ghost.rotateCounterClockwise(1);
 	ghost.updateGridLoc();							//ghost is now located where Tetromino would be if it rotated counter-clockwise.
 	for(int i = 0; i < 4; i++)
@@ -243,7 +248,7 @@ Tetromino::rotateStatus Tetromino::checkCounterClockwise()
 	}
 	for(int i = 0; i < 4; i++)
 	{
-		if(!(0 <= ghost.m_gridLocs[i].row <= 9)){return BUMP;}
+		if(!(0 <= ghost.m_gridLocs[i].col) && !(ghost.m_gridLocs[i].col <= 9)){return BUMP;}
 	}
 	return TRUE;
 }

@@ -25,6 +25,7 @@
 		 };
 		 
 		Tetromino(GameBoard* grid);
+		Tetromino(GameBoard* grid,int,int);
 		
 		void updateGridLoc();
 		void funcGravity();

@@ -49,9 +49,5 @@ void GameBoard::toggleCell(int row,int col,bool state)
  * */
 bool GameBoard::cell(int row,int col)
 {
-	if(m_grid[row][col])
-	{
-		return true;
-	}
-	else return false;
+	return m_grid[row][col];
 }
