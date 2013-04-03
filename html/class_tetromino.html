@@ -109,74 +109,123 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1e693a4b99478302e7c7071667512e5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1e693a4b99478302e7c7071667512e5f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Tetromino</b> (<a class="el" href="class_game_board.html">GameBoard</a> *grid)</td></tr>
+<tr class="memitem:a1e693a4b99478302e7c7071667512e5f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#a1e693a4b99478302e7c7071667512e5f">Tetromino</a> (<a class="el" href="class_game_board.html">GameBoard</a> *grid)</td></tr>
+<tr class="memdesc:a1e693a4b99478302e7c7071667512e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes object with default values.  <a href="#a1e693a4b99478302e7c7071667512e5f">More...</a><br/></td></tr>
 <tr class="separator:a1e693a4b99478302e7c7071667512e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7be393128fb83186dbf63279f5200387"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7be393128fb83186dbf63279f5200387"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Tetromino</b> (<a class="el" href="class_game_board.html">GameBoard</a> *grid, int, int)</td></tr>
 <tr class="separator:a7be393128fb83186dbf63279f5200387"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe7074d0ac3811a17e567f1f810dcfef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe7074d0ac3811a17e567f1f810dcfef"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateGridLoc</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#abe7074d0ac3811a17e567f1f810dcfef">updateGridLoc</a> ()</td></tr>
+<tr class="memdesc:abe7074d0ac3811a17e567f1f810dcfef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates positions of m_gridLocs[n].row and .col, based on m_gridLocs[0]. <br/></td></tr>
 <tr class="separator:abe7074d0ac3811a17e567f1f810dcfef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afca549c6385f4382e28597524672f30f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afca549c6385f4382e28597524672f30f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>funcGravity</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#afca549c6385f4382e28597524672f30f">funcGravity</a> ()</td></tr>
+<tr class="memdesc:afca549c6385f4382e28597524672f30f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mechanics behind gravity. Will contain checks and math as class evolves. <br/></td></tr>
 <tr class="separator:afca549c6385f4382e28597524672f30f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a209a18d5248708f8504c2c19cd3b96d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a209a18d5248708f8504c2c19cd3b96d8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>doGravity</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#a209a18d5248708f8504c2c19cd3b96d8">doGravity</a> ()</td></tr>
+<tr class="memdesc:a209a18d5248708f8504c2c19cd3b96d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggles gridLocs before and after calling funcGravity, updating <a class="el" href="class_game_board.html">GameBoard</a>. <br/></td></tr>
 <tr class="separator:a209a18d5248708f8504c2c19cd3b96d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fad9884d40f29795f208546842d3188"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fad9884d40f29795f208546842d3188"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>testTetromino</b> ()</td></tr>
 <tr class="separator:a7fad9884d40f29795f208546842d3188"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85b11b683ac5d714b613f540684a262a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a85b11b683ac5d714b613f540684a262a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>toggleGridLoc</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#a85b11b683ac5d714b613f540684a262a">toggleGridLoc</a> ()</td></tr>
+<tr class="memdesc:a85b11b683ac5d714b613f540684a262a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls to <a class="el" href="class_game_board.html">GameBoard</a>, toggling empty/full state of all cells currently identified with <a class="el" href="class_tetromino.html">Tetromino</a>. <br/></td></tr>
 <tr class="separator:a85b11b683ac5d714b613f540684a262a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fa856eee0e62418fdc430db4a1318ba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#a1fa856eee0e62418fdc430db4a1318ba">canRotate</a> (bool)</td></tr>
-<tr class="memdesc:a1fa856eee0e62418fdc430db4a1318ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if piece can rotate.  <a href="#a1fa856eee0e62418fdc430db4a1318ba">More...</a><br/></td></tr>
-<tr class="separator:a1fa856eee0e62418fdc430db4a1318ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d4927d722d5de5a8aac1de8d8a0e713"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d4927d722d5de5a8aac1de8d8a0e713"></a>
-rotateStatus&#160;</td><td class="memItemRight" valign="bottom"><b>checkClockwise</b> ()</td></tr>
+rotateStatus&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#a1d4927d722d5de5a8aac1de8d8a0e713">checkClockwise</a> ()</td></tr>
+<tr class="memdesc:a1d4927d722d5de5a8aac1de8d8a0e713"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether piece can rotate clockwise. Returns an enum: FALSE (no), TRUE, or BUMP (rotating will trigger wall bump) <br/></td></tr>
 <tr class="separator:a1d4927d722d5de5a8aac1de8d8a0e713"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b64a4a62805b540378e222743aa6184"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b64a4a62805b540378e222743aa6184"></a>
-rotateStatus&#160;</td><td class="memItemRight" valign="bottom"><b>checkCounterClockwise</b> ()</td></tr>
+rotateStatus&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#a9b64a4a62805b540378e222743aa6184">checkCounterClockwise</a> ()</td></tr>
+<tr class="memdesc:a9b64a4a62805b540378e222743aa6184"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether piece can rotate counter-clockwise. Returns an enum: FALSE (no), TRUE, or BUMP (rotating will trigger wall bump) <br/></td></tr>
 <tr class="separator:a9b64a4a62805b540378e222743aa6184"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e2a858e789658cc97379e76359cc159"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e2a858e789658cc97379e76359cc159"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateClockwise</b> ()</td></tr>
-<tr class="separator:a2e2a858e789658cc97379e76359cc159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa078c0b669a8b79dc79af86e47eb05ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#aa078c0b669a8b79dc79af86e47eb05ff">rotateClockwise</a> ()</td></tr>
+<tr class="memdesc:aa078c0b669a8b79dc79af86e47eb05ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotates <a class="el" href="class_tetromino.html">Tetromino</a> clockwise. Updates <a class="el" href="class_game_board.html">GameBoard</a>.  <a href="#aa078c0b669a8b79dc79af86e47eb05ff">More...</a><br/></td></tr>
+<tr class="separator:aa078c0b669a8b79dc79af86e47eb05ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09ee6f49c44090dfd3004b484d213741"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09ee6f49c44090dfd3004b484d213741"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateClockwise</b> (int)</td></tr>
 <tr class="separator:a09ee6f49c44090dfd3004b484d213741"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa839412e0fe12dc1cebd0d4b0fe04842"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa839412e0fe12dc1cebd0d4b0fe04842"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateCounterClockwise</b> ()</td></tr>
-<tr class="separator:aa839412e0fe12dc1cebd0d4b0fe04842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2378c790ae933d66346b2a3c6658d506"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#a2378c790ae933d66346b2a3c6658d506">rotateCounterClockwise</a> ()</td></tr>
+<tr class="memdesc:a2378c790ae933d66346b2a3c6658d506"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotates <a class="el" href="class_tetromino.html">Tetromino</a> counter-clockwise. Updates <a class="el" href="class_game_board.html">GameBoard</a>.  <a href="#a2378c790ae933d66346b2a3c6658d506">More...</a><br/></td></tr>
+<tr class="separator:a2378c790ae933d66346b2a3c6658d506"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b7d7cab0aa875d99f4bf0f65eb05ac8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b7d7cab0aa875d99f4bf0f65eb05ac8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateCounterClockwise</b> (int)</td></tr>
 <tr class="separator:a0b7d7cab0aa875d99f4bf0f65eb05ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a537bd1d8883cbec35a64a7ad3f5949be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a537bd1d8883cbec35a64a7ad3f5949be"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>moveLeft</b> (int)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#a537bd1d8883cbec35a64a7ad3f5949be">moveLeft</a> (int)</td></tr>
+<tr class="memdesc:a537bd1d8883cbec35a64a7ad3f5949be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves <a class="el" href="class_tetromino.html">Tetromino</a> to the left n cells. <br/></td></tr>
 <tr class="separator:a537bd1d8883cbec35a64a7ad3f5949be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4a4583b8408caac7bc26cbf5ebaec2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4a4583b8408caac7bc26cbf5ebaec2b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>moveRight</b> (int)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tetromino.html#af4a4583b8408caac7bc26cbf5ebaec2b">moveRight</a> (int)</td></tr>
+<tr class="memdesc:af4a4583b8408caac7bc26cbf5ebaec2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves <a class="el" href="class_tetromino.html">Tetromino</a> to the right n cells. <br/></td></tr>
 <tr class="separator:af4a4583b8408caac7bc26cbf5ebaec2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a1fa856eee0e62418fdc430db4a1318ba"></a>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a1e693a4b99478302e7c7071667512e5f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Tetromino::canRotate </td>
+          <td class="memname">Tetromino::Tetromino </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>clockwise</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_game_board.html">GameBoard</a> *&#160;</td>
+          <td class="paramname"><em>grid</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns true if piece can rotate. </p>
+<p>Initializes object with default values. </p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aa078c0b669a8b79dc79af86e47eb05ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tetromino::rotateClockwise </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rotates <a class="el" href="class_tetromino.html">Tetromino</a> clockwise. Updates <a class="el" href="class_game_board.html">GameBoard</a>. </p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">clockwise</td><td>Boolean. Set true if you want to check clockwise rotation; false for counter-clockwise. </td></tr>
+    <tr><td class="paramname">noToggle</td><td>Accepts any integer value. Presence of this parameter causes rotation not to toggleGridLocs(). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a2378c790ae933d66346b2a3c6658d506"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tetromino::rotateCounterClockwise </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rotates <a class="el" href="class_tetromino.html">Tetromino</a> counter-clockwise. Updates <a class="el" href="class_game_board.html">GameBoard</a>. </p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">noToggle</td><td>Accepts any integer value. Presence of this parameter causes rotation not to toggleGridLocs(). </td></tr>
   </table>
   </dd>
 </dl>
@@ -190,7 +239,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>moveRight</b> (int)</
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 2 2013 20:27:34 for Testris by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 2 2013 23:06:51 for Testris by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

@@ -18,70 +18,99 @@ enum {\bfseries rotate\-Status} \{ {\bfseries F\-A\-L\-S\-E} = 0,
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_tetromino_a1e693a4b99478302e7c7071667512e5f}{{\bfseries Tetromino} (\hyperlink{class_game_board}{Game\-Board} $\ast$grid)}\label{class_tetromino_a1e693a4b99478302e7c7071667512e5f}
-
-\item 
+\hyperlink{class_tetromino_a1e693a4b99478302e7c7071667512e5f}{Tetromino} (\hyperlink{class_game_board}{Game\-Board} $\ast$grid)
+\begin{DoxyCompactList}\small\item\em Initializes object with default values. \end{DoxyCompactList}\item 
 \hypertarget{class_tetromino_a7be393128fb83186dbf63279f5200387}{{\bfseries Tetromino} (\hyperlink{class_game_board}{Game\-Board} $\ast$grid, int, int)}\label{class_tetromino_a7be393128fb83186dbf63279f5200387}
 
 \item 
-\hypertarget{class_tetromino_abe7074d0ac3811a17e567f1f810dcfef}{void {\bfseries update\-Grid\-Loc} ()}\label{class_tetromino_abe7074d0ac3811a17e567f1f810dcfef}
+\hypertarget{class_tetromino_abe7074d0ac3811a17e567f1f810dcfef}{void \hyperlink{class_tetromino_abe7074d0ac3811a17e567f1f810dcfef}{update\-Grid\-Loc} ()}\label{class_tetromino_abe7074d0ac3811a17e567f1f810dcfef}
 
-\item 
-\hypertarget{class_tetromino_afca549c6385f4382e28597524672f30f}{void {\bfseries func\-Gravity} ()}\label{class_tetromino_afca549c6385f4382e28597524672f30f}
+\begin{DoxyCompactList}\small\item\em Updates positions of m\-\_\-grid\-Locs\mbox{[}n\mbox{]}.row and .col, based on m\-\_\-grid\-Locs\mbox{[}0\mbox{]}. \end{DoxyCompactList}\item 
+\hypertarget{class_tetromino_afca549c6385f4382e28597524672f30f}{void \hyperlink{class_tetromino_afca549c6385f4382e28597524672f30f}{func\-Gravity} ()}\label{class_tetromino_afca549c6385f4382e28597524672f30f}
 
-\item 
-\hypertarget{class_tetromino_a209a18d5248708f8504c2c19cd3b96d8}{void {\bfseries do\-Gravity} ()}\label{class_tetromino_a209a18d5248708f8504c2c19cd3b96d8}
+\begin{DoxyCompactList}\small\item\em Mechanics behind gravity. Will contain checks and math as class evolves. \end{DoxyCompactList}\item 
+\hypertarget{class_tetromino_a209a18d5248708f8504c2c19cd3b96d8}{void \hyperlink{class_tetromino_a209a18d5248708f8504c2c19cd3b96d8}{do\-Gravity} ()}\label{class_tetromino_a209a18d5248708f8504c2c19cd3b96d8}
 
-\item 
+\begin{DoxyCompactList}\small\item\em Toggles grid\-Locs before and after calling func\-Gravity, updating \hyperlink{class_game_board}{Game\-Board}. \end{DoxyCompactList}\item 
 \hypertarget{class_tetromino_a7fad9884d40f29795f208546842d3188}{void {\bfseries test\-Tetromino} ()}\label{class_tetromino_a7fad9884d40f29795f208546842d3188}
 
 \item 
-\hypertarget{class_tetromino_a85b11b683ac5d714b613f540684a262a}{void {\bfseries toggle\-Grid\-Loc} ()}\label{class_tetromino_a85b11b683ac5d714b613f540684a262a}
+\hypertarget{class_tetromino_a85b11b683ac5d714b613f540684a262a}{void \hyperlink{class_tetromino_a85b11b683ac5d714b613f540684a262a}{toggle\-Grid\-Loc} ()}\label{class_tetromino_a85b11b683ac5d714b613f540684a262a}
 
-\item 
-bool \hyperlink{class_tetromino_a1fa856eee0e62418fdc430db4a1318ba}{can\-Rotate} (bool)
-\begin{DoxyCompactList}\small\item\em Returns true if piece can rotate. \end{DoxyCompactList}\item 
-\hypertarget{class_tetromino_a1d4927d722d5de5a8aac1de8d8a0e713}{rotate\-Status {\bfseries check\-Clockwise} ()}\label{class_tetromino_a1d4927d722d5de5a8aac1de8d8a0e713}
+\begin{DoxyCompactList}\small\item\em Calls to \hyperlink{class_game_board}{Game\-Board}, toggling empty/full state of all cells currently identified with \hyperlink{class_tetromino}{Tetromino}. \end{DoxyCompactList}\item 
+\hypertarget{class_tetromino_a1d4927d722d5de5a8aac1de8d8a0e713}{rotate\-Status \hyperlink{class_tetromino_a1d4927d722d5de5a8aac1de8d8a0e713}{check\-Clockwise} ()}\label{class_tetromino_a1d4927d722d5de5a8aac1de8d8a0e713}
 
-\item 
-\hypertarget{class_tetromino_a9b64a4a62805b540378e222743aa6184}{rotate\-Status {\bfseries check\-Counter\-Clockwise} ()}\label{class_tetromino_a9b64a4a62805b540378e222743aa6184}
+\begin{DoxyCompactList}\small\item\em Checks whether piece can rotate clockwise. Returns an enum\-: F\-A\-L\-S\-E (no), T\-R\-U\-E, or B\-U\-M\-P (rotating will trigger wall bump) \end{DoxyCompactList}\item 
+\hypertarget{class_tetromino_a9b64a4a62805b540378e222743aa6184}{rotate\-Status \hyperlink{class_tetromino_a9b64a4a62805b540378e222743aa6184}{check\-Counter\-Clockwise} ()}\label{class_tetromino_a9b64a4a62805b540378e222743aa6184}
 
-\item 
-\hypertarget{class_tetromino_a2e2a858e789658cc97379e76359cc159}{void {\bfseries rotate\-Clockwise} ()}\label{class_tetromino_a2e2a858e789658cc97379e76359cc159}
-
-\item 
+\begin{DoxyCompactList}\small\item\em Checks whether piece can rotate counter-\/clockwise. Returns an enum\-: F\-A\-L\-S\-E (no), T\-R\-U\-E, or B\-U\-M\-P (rotating will trigger wall bump) \end{DoxyCompactList}\item 
+void \hyperlink{class_tetromino_aa078c0b669a8b79dc79af86e47eb05ff}{rotate\-Clockwise} ()
+\begin{DoxyCompactList}\small\item\em Rotates \hyperlink{class_tetromino}{Tetromino} clockwise. Updates \hyperlink{class_game_board}{Game\-Board}. \end{DoxyCompactList}\item 
 \hypertarget{class_tetromino_a09ee6f49c44090dfd3004b484d213741}{void {\bfseries rotate\-Clockwise} (int)}\label{class_tetromino_a09ee6f49c44090dfd3004b484d213741}
 
 \item 
-\hypertarget{class_tetromino_aa839412e0fe12dc1cebd0d4b0fe04842}{void {\bfseries rotate\-Counter\-Clockwise} ()}\label{class_tetromino_aa839412e0fe12dc1cebd0d4b0fe04842}
-
-\item 
+void \hyperlink{class_tetromino_a2378c790ae933d66346b2a3c6658d506}{rotate\-Counter\-Clockwise} ()
+\begin{DoxyCompactList}\small\item\em Rotates \hyperlink{class_tetromino}{Tetromino} counter-\/clockwise. Updates \hyperlink{class_game_board}{Game\-Board}. \end{DoxyCompactList}\item 
 \hypertarget{class_tetromino_a0b7d7cab0aa875d99f4bf0f65eb05ac8}{void {\bfseries rotate\-Counter\-Clockwise} (int)}\label{class_tetromino_a0b7d7cab0aa875d99f4bf0f65eb05ac8}
 
 \item 
-\hypertarget{class_tetromino_a537bd1d8883cbec35a64a7ad3f5949be}{void {\bfseries move\-Left} (int)}\label{class_tetromino_a537bd1d8883cbec35a64a7ad3f5949be}
+\hypertarget{class_tetromino_a537bd1d8883cbec35a64a7ad3f5949be}{void \hyperlink{class_tetromino_a537bd1d8883cbec35a64a7ad3f5949be}{move\-Left} (int)}\label{class_tetromino_a537bd1d8883cbec35a64a7ad3f5949be}
 
-\item 
-\hypertarget{class_tetromino_af4a4583b8408caac7bc26cbf5ebaec2b}{void {\bfseries move\-Right} (int)}\label{class_tetromino_af4a4583b8408caac7bc26cbf5ebaec2b}
+\begin{DoxyCompactList}\small\item\em Moves \hyperlink{class_tetromino}{Tetromino} to the left n cells. \end{DoxyCompactList}\item 
+\hypertarget{class_tetromino_af4a4583b8408caac7bc26cbf5ebaec2b}{void \hyperlink{class_tetromino_af4a4583b8408caac7bc26cbf5ebaec2b}{move\-Right} (int)}\label{class_tetromino_af4a4583b8408caac7bc26cbf5ebaec2b}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Moves \hyperlink{class_tetromino}{Tetromino} to the right n cells. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_tetromino_a1e693a4b99478302e7c7071667512e5f}{\index{Tetromino@{Tetromino}!Tetromino@{Tetromino}}
+\index{Tetromino@{Tetromino}!Tetromino@{Tetromino}}
+\subsubsection[{Tetromino}]{\setlength{\rightskip}{0pt plus 5cm}Tetromino\-::\-Tetromino (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Board} $\ast$}]{grid}
+\end{DoxyParamCaption}
+)}}\label{class_tetromino_a1e693a4b99478302e7c7071667512e5f}
+
+
+Initializes object with default values. 
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_tetromino_a1fa856eee0e62418fdc430db4a1318ba}{\index{Tetromino@{Tetromino}!can\-Rotate@{can\-Rotate}}
-\index{can\-Rotate@{can\-Rotate}!Tetromino@{Tetromino}}
-\subsubsection[{can\-Rotate}]{\setlength{\rightskip}{0pt plus 5cm}bool Tetromino\-::can\-Rotate (
+\hypertarget{class_tetromino_aa078c0b669a8b79dc79af86e47eb05ff}{\index{Tetromino@{Tetromino}!rotate\-Clockwise@{rotate\-Clockwise}}
+\index{rotate\-Clockwise@{rotate\-Clockwise}!Tetromino@{Tetromino}}
+\subsubsection[{rotate\-Clockwise}]{\setlength{\rightskip}{0pt plus 5cm}Tetromino\-::rotate\-Clockwise (
 \begin{DoxyParamCaption}
-\item[{bool}]{clockwise}
+{}
 \end{DoxyParamCaption}
-)}}\label{class_tetromino_a1fa856eee0e62418fdc430db4a1318ba}
+)}}\label{class_tetromino_aa078c0b669a8b79dc79af86e47eb05ff}
 
 
-Returns true if piece can rotate. 
+Rotates \hyperlink{class_tetromino}{Tetromino} clockwise. Updates \hyperlink{class_game_board}{Game\-Board}. 
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 
 
 \begin{DoxyParams}{Parameters}
-{\em clockwise} & Boolean. Set true if you want to check clockwise rotation; false for counter-\/clockwise. \\
+{\em no\-Toggle} & Accepts any integer value. Presence of this parameter causes rotation not to toggle\-Grid\-Locs(). \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_tetromino_a2378c790ae933d66346b2a3c6658d506}{\index{Tetromino@{Tetromino}!rotate\-Counter\-Clockwise@{rotate\-Counter\-Clockwise}}
+\index{rotate\-Counter\-Clockwise@{rotate\-Counter\-Clockwise}!Tetromino@{Tetromino}}
+\subsubsection[{rotate\-Counter\-Clockwise}]{\setlength{\rightskip}{0pt plus 5cm}Tetromino\-::rotate\-Counter\-Clockwise (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_tetromino_a2378c790ae933d66346b2a3c6658d506}
+
+
+Rotates \hyperlink{class_tetromino}{Tetromino} counter-\/clockwise. Updates \hyperlink{class_game_board}{Game\-Board}. 
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+
+\begin{DoxyParams}{Parameters}
+{\em no\-Toggle} & Accepts any integer value. Presence of this parameter causes rotation not to toggle\-Grid\-Locs(). \\
 \hline
 \end{DoxyParams}
 

@@ -8,6 +8,9 @@
  
  using namespace std;
  
+ /**
+  * @brief Initializes object with default values.
+  * */
  Tetromino::Tetromino(GameBoard *grid)
  {
 	 
@@ -19,6 +22,10 @@
 	 toggleGridLoc();
  }
  
+ /**
+  * @overload Tetromino::Tetromino(GameBoard *grid)
+  * @brief Alternate constructor; does not toggleGridLoc on init.
+  * */
   Tetromino::Tetromino(GameBoard *grid, int row, int col)
  {
 	 
@@ -28,6 +35,10 @@
 	 m_gridLocs[0].col = col;
 	 updateGridLoc();
  }
+
+/**
+ * @brief Updates positions of m_gridLocs[n].row and .col, based on m_gridLocs[0].
+ * */
 
  void Tetromino::updateGridLoc()
  {
@@ -55,6 +66,10 @@
 	 }
  }
  
+ /**
+  * @brief Calls to GameBoard, toggling empty/full state of all cells currently identified with Tetromino.
+  * */
+ 
  void Tetromino::toggleGridLoc()
  {
 	 for(int i = 0; i < 4; i++)
@@ -63,11 +78,19 @@
 	 }
  }
  
+ /**
+  * @brief Mechanics behind gravity. Will contain checks and math as class evolves.
+  * */
+ 
  void Tetromino::funcGravity()
  {
 	 m_gridLocs[0].row--;
 	 updateGridLoc();
  }
+ 
+ /**
+  * @brief Toggles gridLocs before and after calling funcGravity, updating GameBoard.
+  * */
  
  void Tetromino::doGravity()
  {
@@ -75,6 +98,10 @@
 	 funcGravity();
 	 toggleGridLoc();
  }
+ 
+ /**
+  * @brief Rotates Tetromino clockwise. Updates GameBoard.
+  * */
  
  void Tetromino::rotateClockwise()
  {
@@ -106,6 +133,10 @@
 	 toggleGridLoc(); //Turns new cells ON
  }
  
+ /**
+  * @brief Rotates Tetromino counter-clockwise. Updates GameBoard.
+  * */
+  
  void Tetromino::rotateCounterClockwise()
   {
 	 toggleGridLoc(); //Turns current cells OFF
@@ -136,6 +167,11 @@
 	 toggleGridLoc(); //Turns new cells ON
  }
  
+ /**
+  * @overload Tetromino::rotateClockwise()
+  * @param noToggle Accepts any integer value. Presence of this parameter causes rotation not to toggleGridLocs().
+  * */
+ 
   void Tetromino::rotateClockwise(int noToggle)
  {
 	 switch(m_facing)
@@ -163,6 +199,11 @@
 	 }
 	 updateGridLoc();
  }
+ 
+ /**
+  * @overload Tetromino::rotateCounterClockwise()
+  * @param noToggle Accepts any integer value. Presence of this parameter causes rotation not to toggleGridLocs().
+  * */
  
  void Tetromino::rotateCounterClockwise(int noToggle)
   {
@@ -193,33 +234,9 @@
  }
  
  /**
-  * @brief Returns true if piece can rotate
-  * @param clockwise Boolean. Set true if you want to check clockwise rotation; false for counter-clockwise.
+  * @brief Checks whether piece can rotate clockwise. Returns an enum: FALSE (no), TRUE, or BUMP (rotating will trigger wall bump)
   * */
- bool Tetromino::canRotate(bool clockwise)
- {
-	 Tetromino ghost(m_gameBoard);
-	 
-	 ghost.m_gridLocs[0].row = m_gridLocs[0].row;
-	 ghost.m_gridLocs[1].col = m_gridLocs[1].col;
-	 ghost.updateGridLoc();
-	 if(clockwise){ghost.rotateClockwise(1);}
-	 else {ghost.rotateCounterClockwise(1);}
-	 
-	 for(int i = 0; i < 4; i++)
-	 {
-		 if(m_gameBoard->cell(ghost.m_gridLocs[i].row,m_gridLocs[i].col))
-		 {
-			 return false;
-		 }
-		 else if(!(23 >= m_gridLocs[i].row >= 0) || !(9 >= m_gridLocs[i].col >= 0))
-		 {
-			 return false;
-		 }
-	 }
-	 return true;
- }
-
+ 
 Tetromino::rotateStatus Tetromino::checkClockwise()
 {
 	Tetromino ghost(m_gameBoard,m_gridLocs[0].row,m_gridLocs[0].col);	//Initialize a "ghost" Tetromino to test conditions
@@ -249,12 +266,16 @@ Tetromino::rotateStatus Tetromino::checkClockwise()
 	return TRUE; //if control gets this far, rotation is free and clear. return TRUE.
 }
 
+ /**
+  * @brief Checks whether piece can rotate counter-clockwise. Returns an enum: FALSE (no), TRUE, or BUMP (rotating will trigger wall bump)
+  * */
+
 Tetromino::rotateStatus Tetromino::checkCounterClockwise()
 {
 	Tetromino ghost(m_gameBoard,m_gridLocs[0].row,m_gridLocs[0].col);
+	ghost.m_facing = m_facing;
 	toggleGridLoc();
 	ghost.rotateCounterClockwise(1);
-	ghost.updateGridLoc();
 	for(int i = 0; i < 4; i++) //Iterate through the four component cells of the Tetromino
 	{
 		if(m_gameBoard->cell(ghost.m_gridLocs[i].row, ghost.m_gridLocs[i].col))
@@ -278,6 +299,10 @@ Tetromino::rotateStatus Tetromino::checkCounterClockwise()
 	return TRUE;
 }
 
+/**
+ * @brief Moves Tetromino to the left n cells.
+ * */
+
 void Tetromino::moveLeft(int n)
 {
 	toggleGridLoc();
@@ -286,6 +311,10 @@ void Tetromino::moveLeft(int n)
 	toggleGridLoc();
 }
 
+/**
+ * @brief Moves Tetromino to the right n cells.
+ * */
+ 
 void Tetromino::moveRight(int n)
 {
 	toggleGridLoc();

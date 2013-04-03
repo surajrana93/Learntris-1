@@ -32,7 +32,6 @@
 		void doGravity();
 		void testTetromino();
 		void toggleGridLoc();
-		bool canRotate(bool); //Not yet implemented
 		
 		rotateStatus checkClockwise();
 		rotateStatus checkCounterClockwise();
