@@ -35,13 +35,13 @@ int main(int argc, char **argv)
 		tester.rotateCounterClockwise();
 		gameBoard.printBoard();
 	}
-	/*Tetromino::facing thisFacing = (Tetromino::LEFT);
+	Tetromino::facing thisFacing = (Tetromino::LEFT);
 	for(int i = 0; i < 5; i++)
 	{
 		cout << "thisFacing: " << thisFacing << endl;
 		thisFacing--;
 	}
-	/*gameBoard.toggleCell(5,5,true);
+	gameBoard.toggleCell(5,5,true);
 	gameBoard.printBoard();
 	gameBoard.toggleCell(5,5,false);
 	gameBoard.printBoard();

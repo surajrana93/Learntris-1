@@ -1,20 +1,58 @@
+/**
+ * @file LearntrisTests.cpp
+ * @brief Implements console test environment for Learntris source
+ * */
+
 #include "LearntrisTests.h"
 #include <iostream>
 #include <iomanip>
+#include <string>
+#include <map>
 
 using namespace std;
 
-ConsoleMenu::ConsoleMenu(){}
+ConsoleMenu::ConsoleMenu(){
+
+	m_MenuItems['0'] = "Please select from the following:";
+	m_MenuItems['1'] = "Initialize Tetromino";
+	m_MenuItems.insert(std::pair<char,string>('2',"Drop Tetromino"));
+	m_MenuItems.insert(pair<char,string>('3',"Rotate clockwise"));
+	m_MenuItems.insert(pair<char,string>('4',"Rotate counterclockwise"));
+	m_MenuItems.insert(pair<char,string>('5',"rotateStatus cwise"));
+	m_MenuItems.insert(pair<char,string>('6',"rotateStatus ccwise"));
+	m_MenuItems.insert(pair<char,string>('7',"Move left"));
+	m_MenuItems.insert(pair<char,string>('8',"Move right"));
+	m_MenuItems.insert(pair<char,string>('Q',"Quit"));	
+}
 
 void ConsoleMenu::printMenu()
 {
-	cout << "Please select from the following:\n";
-	cout << left << "(1) Initialize Tetromino (2) Drop Tetromino\n";
-	cout << left << "(3) Rotate clockwise (4) Rotate counterclockwise\n";
-	cout << left << "(5) rotateStatus cwise (6) rotateStatus ccwise\n";
-	cout << left << "(7) Move left (8) Move right\n";
-	cout << left << "(Q)uit\n";
-	cout << "Enter your selection: ";
+	cout << m_MenuItems.size();
+	
+	std::map<char,string>::iterator MapIterator;
+	bool odd = 0;
+	bool zero = 1;
+	for(MapIterator = m_MenuItems.begin(); MapIterator != m_MenuItems.end(); ++MapIterator)
+	{
+		string thisString = "(" + string(&MapIterator->first) + ") " + MapIterator->second;
+		
+		if(zero)
+		{
+			cout << MapIterator->second << endl;
+			zero = 0;
+		}
+		else if(odd)
+		{
+			cout << left << setw(25) << thisString;
+		}
+		else
+		{
+			cout << setw(5) << right << "" << thisString << endl;
+		}
+		odd = !odd;
+	}
+	
+	cout << "\nEnter your selection: ";
 }
 
 void ConsoleMenu::loopMenu(GameBoard &gameBoard, Tetromino &tetromino)
@@ -53,6 +91,9 @@ void ConsoleMenu::loopMenu(GameBoard &gameBoard, Tetromino &tetromino)
 			case 'Q':
 			case 'q':
 				continueLoop = false;
+				break;
+			default:
+				cout << "Invalid input.\n";
 				break;
 		}
 	}

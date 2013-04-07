@@ -7,6 +7,19 @@
  class GameBoard {
 	//friend Tetromino;
 	public:
+		struct BoardCell { //Represents a single cell on the game board
+			enum color {
+				BLUE,
+				CYAN,
+				GREEN,
+				YELLOW,
+				ORANGE,
+				RED
+			};
+			
+			bool state; //True if the cell is occupied, false if it's open
+		};
+	
 		GameBoard();
 		
 		void toggleCell(int,int);
@@ -22,7 +35,5 @@
 	protected:
 		
 	private:
-		bool m_grid[24][10];
+		BoardCell m_grid[22][10];
  };
-
-

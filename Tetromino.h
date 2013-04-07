@@ -1,8 +1,6 @@
 /**
  * @file Tetromino.h
  * @brief Define Tetromino class (serves as I block and template for other blocks)
- * @author Chance Rosenthal
- * @todo Implement canRotate()
  */
  #include "GameBoard.h"
 
@@ -10,13 +8,18 @@
  class Tetromino
  {
 	public: 
-		 enum facing
+		 enum facing //Tetromino's facing direction, used by location functions
 		 {
 			 LEFT = 0,
 			 UP,
 			 RIGHT,
 			 DOWN
 		 };
+		 
+/**
+ * @brief Enumerated type contains possible results of an attempted rotation:
+ *        unsuccessful, successful, or trigger a wall bump.
+ * */
 		 enum rotateStatus
 		 {
 			 FALSE = 0,
@@ -25,7 +28,7 @@
 		 };
 		 
 		Tetromino(GameBoard* grid);
-		Tetromino(GameBoard* grid,int,int);
+		Tetromino(GameBoard* grid,int,int,facing);
 		
 		void updateGridLoc();
 		void funcGravity();

@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="Learntris" InternalType="Console">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00010001N0005Debug000000000000]]>
+    </Plugin>
+  </Plugins>
   <Description/>
   <Dependencies/>
+  <VirtualDirectory Name="src">
+    <File Name="main.cpp"/>
+    <File Name="../GameBoard.h"/>
+    <File Name="GameBoard.cpp"/>
+    <File Name="GameBoardDiag.cpp"/>
+    <File Name="Tetromino.h"/>
+    <File Name="Tetromino.cpp"/>
+    <File Name="LearntrisTests.cpp"/>
+    <File Name="LearntrisTests.h"/>
+    <File Name="TetrominoRotation.cpp"/>
+  </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>
       <Compiler Options="" C_Options="">
@@ -12,8 +28,8 @@
       </Linker>
       <ResourceCompiler Options=""/>
     </GlobalSettings>
-    <Configuration Name="Debug" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
-      <Compiler Options="-g;-O0;-Wall" C_Options="-g;-O0;-Wall" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" UseDifferentPCHFlags="no" PCHFlags="">
+    <Configuration Name="Debug" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g;-O0;-Wall; -pedantic;" C_Options="-g;-O0;-Wall" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" UseDifferentPCHFlags="no" PCHFlags="">
         <IncludePath Value="."/>
       </Compiler>
       <Linker Options="" Required="yes"/>
@@ -87,14 +103,4 @@
       </Completion>
     </Configuration>
   </Settings>
-  <VirtualDirectory Name="src">
-    <File Name="main.cpp"/>
-    <File Name="../GameBoard.h"/>
-    <File Name="GameBoard.cpp"/>
-    <File Name="GameBoardDiag.cpp"/>
-    <File Name="Tetromino.h"/>
-    <File Name="Tetromino.cpp"/>
-    <File Name="LearntrisTests.cpp"/>
-    <File Name="LearntrisTests.h"/>
-  </VirtualDirectory>
 </CodeLite_Project>

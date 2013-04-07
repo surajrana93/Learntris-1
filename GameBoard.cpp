@@ -14,10 +14,10 @@ using namespace std;
 
 GameBoard::GameBoard()
 {
-		for(int rows = 23; rows >= 0; rows--)
+		for(int rows = 21; rows >= 0; rows--)
 		{
 			for(int cols = 0; cols < 10; cols++)
-				m_grid[rows][cols] = false;
+				m_grid[rows][cols].state = false;
 		}
 }
 
@@ -29,7 +29,7 @@ GameBoard::GameBoard()
 
 void GameBoard::toggleCell(int row,int col)
 {
-	m_grid[row][col] = !m_grid[row][col];
+	m_grid[row][col].state = !m_grid[row][col].state;
 }
 
 /**
@@ -39,7 +39,7 @@ void GameBoard::toggleCell(int row,int col)
  
 void GameBoard::toggleCell(int row,int col,bool state)
 {
-	m_grid[row][col] = state;
+	m_grid[row][col].state = state;
 }
 
 /**
@@ -49,5 +49,5 @@ void GameBoard::toggleCell(int row,int col,bool state)
  * */
 bool GameBoard::cell(int row,int col)
 {
-	return m_grid[row][col];
+	return m_grid[row][col].state;
 }

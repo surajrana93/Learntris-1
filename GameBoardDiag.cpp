@@ -1,7 +1,6 @@
 /**
  * @file GameBoardDiag.cpp
  * @brief Diag functions for class GameBoard
- * @author Chance Rosenthal
  * */
 
 #include <iostream>
@@ -26,9 +25,9 @@ void GameBoard::printBoard()
 	//For each row and each column, print contents.
 	//Print extra rows below rows 23-22 and 21-20.
 	//These identify where Tetronimos spawn (horizontally) and where they wait their turn.
-	for(int rows = 23; rows >= 0; rows--)
+	for(int rows = 21; rows >= 0; rows--)
 	{
-		if(rows ==  21 || rows == 19)
+		if(rows == 19)
 		{
 			cout << "---|";
 			cout << setfill('-') << setw(33) << '|' << endl;
@@ -37,11 +36,11 @@ void GameBoard::printBoard()
 		cout << setw(2) << rows <<" | ";
 		for(int cols = 0; cols < 10; cols++)
 		{
-			if(m_grid[rows][cols])
+			if(m_grid[rows][cols].state)
 			{
 				cout << " X ";
 			}
-			else cout << " 0 ";
+			else cout << " . ";
 		}
 		cout << " |\n";
 	}
