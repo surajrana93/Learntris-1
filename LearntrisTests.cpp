@@ -22,13 +22,14 @@ ConsoleMenu::ConsoleMenu(){
 	m_MenuItems.insert(pair<char,string>('6',"rotateStatus ccwise"));
 	m_MenuItems.insert(pair<char,string>('7',"Move left"));
 	m_MenuItems.insert(pair<char,string>('8',"Move right"));
+	m_MenuItems.insert(pair<char,string>('9',"Wall bump clockwise"));
+	m_MenuItems.insert(pair<char,string>('A',"Wall bump counterclockwise"));
+	m_MenuItems.insert(pair<char,string>('B',"Print inBounds()"));
 	m_MenuItems.insert(pair<char,string>('Q',"Quit"));	
 }
 
 void ConsoleMenu::printMenu()
 {
-	cout << m_MenuItems.size();
-	
 	std::map<char,string>::iterator MapIterator;
 	bool odd = 0;
 	bool zero = 1;
@@ -43,7 +44,7 @@ void ConsoleMenu::printMenu()
 		}
 		else if(odd)
 		{
-			cout << left << setw(25) << thisString;
+			cout << left << setw(30) << thisString;
 		}
 		else
 		{
@@ -87,6 +88,21 @@ void ConsoleMenu::loopMenu(GameBoard &gameBoard, Tetromino &tetromino)
 				break;
 			case '8':
 				tetromino.moveRight(1);
+				break;
+			case '9':
+				tetromino.wallBumpClockwise();
+				break;
+			case 'A':
+			case 'a':
+				tetromino.wallBumpCounterClockwise();
+				break;
+			case 'B':
+			case 'b':
+				for(int i = 0; i < 4; i++)
+				{
+					cout << "Tetromino::m_gridLocs[" << i << "].col: " << tetromino.returnGridLocs(i,false) << endl;
+				}
+				cout << "Tetromino::inBounds(): " << tetromino.inBounds() << endl;
 				break;
 			case 'Q':
 			case 'q':

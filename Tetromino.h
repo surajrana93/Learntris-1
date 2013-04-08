@@ -36,15 +36,22 @@
 		void testTetromino();
 		void toggleGridLoc();
 		
+		bool inBounds();
 		rotateStatus checkClockwise();
 		rotateStatus checkCounterClockwise();
 		void rotateClockwise();
 		void rotateClockwise(int);
 		void rotateCounterClockwise();
 		void rotateCounterClockwise(int);
+		void wallBumpClockwise();
+		void wallBumpCounterClockwise();
 		
 		void moveLeft(int);
 		void moveRight(int);
+		void moveLeft(int,bool);
+		void moveRight(int,bool);
+		
+		int returnGridLocs(int,bool);
 		
 	private:
 		facing m_facing;

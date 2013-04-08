@@ -14,13 +14,22 @@ using namespace std;
 
 GameBoard::GameBoard()
 {
-		for(int rows = 21; rows >= 0; rows--)
-		{
-			for(int cols = 0; cols < 10; cols++)
-				m_grid[rows][cols].state = false;
-		}
+	for(int rows = m_height; rows >= 0; rows--)
+	{
+		for(int cols = 0; cols < m_width; cols++)
+			m_grid[rows][cols].state = false;
+	}
 }
 
+int GameBoard::returnHeight()
+{
+	return m_height;
+}
+
+int GameBoard::returnWidth()
+{
+	return m_width;
+}
 /**
  * @brief Toggles specified cell
  * @param row Row of cell to toggle

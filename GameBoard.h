@@ -24,6 +24,8 @@
 		
 		void toggleCell(int,int);
 		void toggleCell(int,int,bool);
+		int returnHeight();
+		int returnWidth();
 		bool cell(int,int);
 		
 	/*
@@ -35,5 +37,7 @@
 	protected:
 		
 	private:
-		BoardCell m_grid[22][10];
+		const static int m_height = 22;
+		const static int m_width = 11;
+		BoardCell m_grid[m_height][m_width];
  };

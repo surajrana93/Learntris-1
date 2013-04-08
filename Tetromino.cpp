@@ -15,7 +15,7 @@ Tetromino::Tetromino(GameBoard *grid)
 	m_gameBoard = grid;
 	m_facing = LEFT;
 	m_gridLocs[0].row = 20;
-	m_gridLocs[0].col = 6;
+	m_gridLocs[0].col = 7;
 	updateGridLoc();
 	toggleGridLoc();
 }
@@ -88,9 +88,20 @@ void Tetromino::funcGravity()
 
 void Tetromino::doGravity()
 {
-	toggleGridLoc();
-	funcGravity();
-	toggleGridLoc();
+	bool canGravity = 1;
+	for(int i = 0; i < 4; i++)
+	{
+		if(m_gridLocs[i].row == 0)
+		{
+		canGravity = 0;
+		}
+	}
+		if(canGravity)
+		{
+		toggleGridLoc();
+		funcGravity();
+		toggleGridLoc();
+		}
 }
 
 /**
@@ -115,4 +126,45 @@ void Tetromino::moveRight(int n)
 	m_gridLocs[0].col += n;
 	updateGridLoc();
 	toggleGridLoc();
+}
+
+/**
+ * @overload void Tetromino::moveLeft(int n)
+ * */
+
+void Tetromino::moveLeft(int n, bool toggleCells)
+{
+	if(toggleCells) toggleGridLoc();
+	m_gridLocs[0].col -= n;
+	updateGridLoc();
+	if(toggleCells) toggleGridLoc();
+}
+
+/**
+ * @overload void Tetromino::moveRight(int n)
+ * */
+
+void Tetromino::moveRight(int n, bool toggleCells)
+{
+	if(toggleCells) toggleGridLoc();
+	m_gridLocs[0].col += n;
+	updateGridLoc();
+	if(toggleCells) toggleGridLoc();
+}
+
+bool Tetromino::inBounds()
+{
+	for(int i = 0; i <= 3; i++)
+	{
+		if((m_gridLocs[i].col < 1) || (m_gridLocs[i].col > 10))
+		{
+			return 0;
+		}
+	}
+	return 1;
+}
+
+int Tetromino::returnGridLocs(int n,bool row)
+{
+	if(row) return m_gridLocs[n].row; else return m_gridLocs[n].col;
 }

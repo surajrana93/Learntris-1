@@ -17,7 +17,7 @@ void GameBoard::printBoard()
 {
 	//Print column labels
 	cout << setw(5) << "";
-	for(int i = 0; i < 10; i++){cout << " " << i << " ";}
+	for(int i = 1; i < 11; i++){cout << " " << i << " ";}
 	cout << endl;
 	cout << "---|";
 	cout << setfill('-') << setw(33) << '|' << endl;
@@ -34,7 +34,7 @@ void GameBoard::printBoard()
 			cout << setfill(' ');
 		}
 		cout << setw(2) << rows <<" | ";
-		for(int cols = 0; cols < 10; cols++)
+		for(int cols = 1; cols <= 10; cols++)
 		{
 			if(m_grid[rows][cols].state)
 			{

@@ -4,7 +4,9 @@
  * */
 
 #include "Tetromino.h"
+#include <iostream>
 
+using namespace std;
 /**
  * @brief Rotates Tetromino clockwise. Updates GameBoard.
  * */
@@ -143,35 +145,39 @@ Tetromino::rotateStatus Tetromino::checkClockwise()
 {
 	GameBoard ghostBoard;
 	for(int rows = 0; rows <= 21; rows++) { //Make a copy of the game board
-		for(int cols = 0; cols <= 9; cols++) {
+		for(int cols = 1; cols <= 10; cols++)
+		{
 			ghostBoard.toggleCell(rows,cols,m_gameBoard->cell(rows,cols));
 		}
 	}
 	Tetromino ghost(&ghostBoard,m_gridLocs[0].row,m_gridLocs[0].col,m_facing); //and a copy of the Tetromino
-	//ghost.m_facing = m_facing;
+
 	ghost.toggleGridLoc(); //Turn ghost's position on ghostBoard off; avoids interference during upcoming checks
 	ghost.rotateClockwise(1);
+	
 	for(int i = 0; i < 4; i++) { //Iterate through the four component cells of the Tetromino
-		if(ghostBoard.cell(ghost.m_gridLocs[i].row, ghost.m_gridLocs[i].col)) {
-			ghost.toggleGridLoc();
+		if(ghostBoard.cell(ghost.m_gridLocs[i].row,ghost.m_gridLocs[i].col))
+		{
 			return FALSE;
 		} //and if those gameBoard cells are occupied, return FALSE
 	}
-	for(int i = 0; i < 4; i++) { //Iterate through same
-		while(!((0 <= ghost.m_gridLocs[i].col) && (ghost.m_gridLocs[i].col <= 9))) { //and if those cells are out of bounds
-			bool outOfBounds = 1;
-			while(outOfBounds) {
-				ghost.moveLeft(1); //move ghost back in bounds
+	cout << "ghost.inBounds(): " << ghost.inBounds() << endl;
+	if(!ghost.inBounds()){
+		while(!ghost.inBounds())
+			{ //and if those cells are out of bounds
+				for(int i = 0; i < 4; i++)
+					if(ghost.m_gridLocs[i].col < 1){ghost.moveRight(1,false);}
+					else if(ghost.m_gridLocs[i].col > 10){ghost.moveLeft(1,false);} //move ghost back in bounds
 			}
-			for(int i = 0; i < 4; i++) {
-				if(ghostBoard.cell(ghost.m_gridLocs[i].row,ghost.m_gridLocs[i].col)) {
-					ghost.toggleGridLoc(); //check if any of its new cell locations are already occupied
-					return FALSE;
+				for(int i = 0; i < 4; i++)
+				{
+					if(ghostBoard.cell(ghost.m_gridLocs[i].row,ghost.m_gridLocs[i].col))
+					{ //check if any of its new cell locations are already occupied
+						return FALSE;
+					}
 				}
-			}
-			ghost.toggleGridLoc(); //if not, return BUMP (cue a wallbump)
-			return BUMP;
-		}
+		ghost.toggleGridLoc(); //if not, return BUMP (cue a wallbump)
+		return BUMP;
 	}
 	ghost.rotateCounterClockwise(1);
 	ghost.toggleGridLoc();
@@ -186,37 +192,69 @@ Tetromino::rotateStatus Tetromino::checkCounterClockwise()
 {
 	GameBoard ghostBoard;
 	for(int rows = 0; rows <= 21; rows++) { //Make a copy of the game board
-		for(int cols = 0; cols <= 9; cols++) {
+		for(int cols = 1; cols <= 10; cols++)
+		{
 			ghostBoard.toggleCell(rows,cols,m_gameBoard->cell(rows,cols));
 		}
 	}
 	Tetromino ghost(&ghostBoard,m_gridLocs[0].row,m_gridLocs[0].col,m_facing); //and a copy of the Tetromino
-	//ghost.m_facing = m_facing;
+
 	ghost.toggleGridLoc(); //Turn ghost's position on ghostBoard off; avoids interference during upcoming checks
 	ghost.rotateCounterClockwise(1);
+	
 	for(int i = 0; i < 4; i++) { //Iterate through the four component cells of the Tetromino
-		if(ghostBoard.cell(ghost.m_gridLocs[i].row, ghost.m_gridLocs[i].col)) {
-			ghost.toggleGridLoc();
+		if(ghostBoard.cell(ghost.m_gridLocs[i].row,ghost.m_gridLocs[i].col))
+		{
 			return FALSE;
 		} //and if those gameBoard cells are occupied, return FALSE
 	}
-	for(int i = 0; i < 4; i++) { //Iterate through same
-		while(!((0 <= ghost.m_gridLocs[i].col) && (ghost.m_gridLocs[i].col <= 9))) { //and if those cells are out of bounds
-			bool outOfBounds = 1;
-			while(outOfBounds) {
-				ghost.moveLeft(1); //move ghost back in bounds
+	cout << "ghost.inBounds(): " << ghost.inBounds() << endl;
+	if(!ghost.inBounds()){
+		while(!ghost.inBounds())
+			{ //and if those cells are out of bounds
+				for(int i = 0; i < 4; i++)
+					if(ghost.m_gridLocs[i].col < 1){ghost.moveRight(1,false);}
+					else if(ghost.m_gridLocs[i].col > 10){ghost.moveLeft(1,false);} //move ghost back in bounds
 			}
-			for(int i = 0; i < 4; i++) {
-				if(ghostBoard.cell(ghost.m_gridLocs[i].row,ghost.m_gridLocs[i].col)) {
-					ghost.toggleGridLoc(); //check if any of its new cell locations are already occupied
-					return FALSE;
+				for(int i = 0; i < 4; i++)
+				{
+					if(ghostBoard.cell(ghost.m_gridLocs[i].row,ghost.m_gridLocs[i].col))
+					{ //check if any of its new cell locations are already occupied
+						return FALSE;
+					}
 				}
-			}
-			ghost.toggleGridLoc(); //if not, return BUMP (cue a wallbump)
-			return BUMP;
-		}
+		ghost.toggleGridLoc(); //if not, return BUMP (cue a wallbump)
+		return BUMP;
 	}
-	ghost.rotateClockwise(1);
+	ghost.rotateCounterClockwise(1);
 	ghost.toggleGridLoc();
 	return TRUE;
+}
+
+void Tetromino::wallBumpClockwise()
+{
+	toggleGridLoc(); //turn off current location
+	rotateClockwise(1); //rotate (Tetro is now out-of-bounds)
+	while(!inBounds()) {
+		for(int i = 0; i <= 4; i++){
+		if(m_gridLocs[i].col < 1){moveRight(1,false);}
+		else if(m_gridLocs[i].col > 10){moveLeft(1,false);}
+		if(inBounds()){break;}
+		}
+	}
+	toggleGridLoc(); //turn on new location
+}
+
+void Tetromino::wallBumpCounterClockwise()
+{
+	toggleGridLoc(); //turn off current location
+	rotateCounterClockwise(1); //rotate (Tetro is now out-of-bounds)
+	while(!inBounds()) {
+		for(int i = 0; i <= 4; i++){
+		if(m_gridLocs[i].col < 1){moveRight(1,false);}
+		else if(m_gridLocs[i].col > 10){moveLeft(1,false);}
+		if(inBounds()){break;}
+		}
+	}
+	toggleGridLoc(); //turn on new location
 }
