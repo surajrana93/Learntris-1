@@ -16,6 +16,7 @@ Tetromino::Tetromino(GameBoard *grid)
 	m_facing = LEFT;
 	m_gridLocs[0].row = 20;
 	m_gridLocs[0].col = 7;
+	m_gameBoard->setColor(m_color);
 	updateGridLoc();
 	toggleGridLoc();
 }
@@ -30,6 +31,7 @@ Tetromino::Tetromino(GameBoard *grid, int row, int col, facing face)
 	m_facing = face;
 	m_gridLocs[0].row = row;
 	m_gridLocs[0].col = col;
+	m_gameBoard->setColor(m_color);
 	updateGridLoc();
 }
 
@@ -68,40 +70,8 @@ void Tetromino::updateGridLoc()
 void Tetromino::toggleGridLoc()
 {
 	for(int i = 0; i < 4; i++) {
-		m_gameBoard->toggleCell((m_gridLocs[i].row),(m_gridLocs[i].col));
+		m_gameBoard->toggleCell((m_gridLocs[i].row),(m_gridLocs[i].col),m_color);
 	}
-}
-
-/**
- * @brief Mechanics behind gravity. Will contain checks and math as class evolves.
- * */
-
-void Tetromino::funcGravity()
-{
-	m_gridLocs[0].row--;
-	updateGridLoc();
-}
-
-/**
- * @brief Toggles gridLocs before and after calling funcGravity, updating GameBoard.
- * */
-
-void Tetromino::doGravity()
-{
-	bool canGravity = 1;
-	for(int i = 0; i < 4; i++)
-	{
-		if(m_gridLocs[i].row == 0)
-		{
-		canGravity = 0;
-		}
-	}
-		if(canGravity)
-		{
-		toggleGridLoc();
-		funcGravity();
-		toggleGridLoc();
-		}
 }
 
 /**
@@ -150,6 +120,52 @@ void Tetromino::moveRight(int n, bool toggleCells)
 	m_gridLocs[0].col += n;
 	updateGridLoc();
 	if(toggleCells) toggleGridLoc();
+}
+
+bool Tetromino::canMoveLeft(int n)
+{
+	GameBoard ghostBoard;
+	for(int rows = 0; rows <= 21; rows++) { //Make a copy of the game board
+		for(int cols = 1; cols <= 10; cols++)
+		{
+			ghostBoard.toggleCell(rows,cols,m_gameBoard->cell(rows,cols),m_color);
+		}
+	}
+	Tetromino ghost(&ghostBoard,m_gridLocs[0].row,m_gridLocs[0].col,m_facing); //and a copy of the Tetromino
+
+	ghost.toggleGridLoc();
+	ghost.moveLeft(n,0);
+	
+	for(int i = 0; i < 4; i++) { //Iterate through the four component cells of the Tetromino
+		if(ghostBoard.cell(ghost.m_gridLocs[i].row,ghost.m_gridLocs[i].col))
+		{
+			return FALSE;
+		} //and if those gameBoard cells are occupied, return FALSE
+	}
+	return TRUE;
+}
+
+bool Tetromino::canMoveRight(int n)
+{
+	GameBoard ghostBoard;
+	for(int rows = 0; rows <= 21; rows++) { //Make a copy of the game board
+		for(int cols = 1; cols <= 10; cols++)
+		{
+			ghostBoard.toggleCell(rows,cols,m_gameBoard->cell(rows,cols),m_color);
+		}
+	}
+	Tetromino ghost(&ghostBoard,m_gridLocs[0].row,m_gridLocs[0].col,m_facing); //and a copy of the Tetromino
+
+	ghost.toggleGridLoc();
+	ghost.moveRight(n,0);
+	
+	for(int i = 0; i < 4; i++) { //Iterate through the four component cells of the Tetromino
+		if(ghostBoard.cell(ghost.m_gridLocs[i].row,ghost.m_gridLocs[i].col))
+		{
+			return FALSE;
+		} //and if those gameBoard cells are occupied, return FALSE
+	}
+	return TRUE;
 }
 
 bool Tetromino::inBounds()

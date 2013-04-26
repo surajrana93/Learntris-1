@@ -19,6 +19,7 @@ GameBoard::GameBoard()
 		for(int cols = 0; cols < m_width; cols++)
 			m_grid[rows][cols].state = false;
 	}
+	m_workingColor = RED;
 }
 
 int GameBoard::returnHeight()
@@ -36,9 +37,10 @@ int GameBoard::returnWidth()
  * @param col Column of cell to toggle
  * */
 
-void GameBoard::toggleCell(int row,int col)
+void GameBoard::toggleCell(int row,int col,color i_color)
 {
 	m_grid[row][col].state = !m_grid[row][col].state;
+	m_grid[row][col].cellColor = i_color;
 }
 
 /**
@@ -46,9 +48,10 @@ void GameBoard::toggleCell(int row,int col)
  * @param state Target state: cell open (false) or occupied (true)
  * */
  
-void GameBoard::toggleCell(int row,int col,bool state)
+void GameBoard::toggleCell(int row,int col,bool state,color i_color)
 {
 	m_grid[row][col].state = state;
+	m_grid[row][col].cellColor = i_color;
 }
 
 /**
@@ -59,4 +62,14 @@ void GameBoard::toggleCell(int row,int col,bool state)
 bool GameBoard::cell(int row,int col)
 {
 	return m_grid[row][col].state;
+}
+
+void GameBoard::setColor(color Color)
+{
+	m_workingColor = Color;
+}
+
+color GameBoard::cellColor(int rows,int cols)
+{
+	return m_grid[rows][cols].cellColor;
 }

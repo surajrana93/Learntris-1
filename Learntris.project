@@ -17,6 +17,7 @@
     <File Name="LearntrisTests.cpp"/>
     <File Name="LearntrisTests.h"/>
     <File Name="TetrominoRotation.cpp"/>
+    <File Name="TetrominoGravity.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

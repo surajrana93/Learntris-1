@@ -50,6 +50,8 @@
 		void moveRight(int);
 		void moveLeft(int,bool);
 		void moveRight(int,bool);
+		bool canMoveLeft(int);
+		bool canMoveRight(int);
 		
 		int returnGridLocs(int,bool);
 		
@@ -61,6 +63,7 @@
 			int row, col;
 		};
 		gridLocs m_gridLocs[4];
+		const static color m_color = CYAN;
  };
  
 	inline Tetromino::facing operator++(Tetromino::facing &sub,int)

@@ -25,6 +25,8 @@ ConsoleMenu::ConsoleMenu(){
 	m_MenuItems.insert(pair<char,string>('9',"Wall bump clockwise"));
 	m_MenuItems.insert(pair<char,string>('A',"Wall bump counterclockwise"));
 	m_MenuItems.insert(pair<char,string>('B',"Print inBounds()"));
+	m_MenuItems.insert(pair<char,string>('E',"Can move left?"));
+	m_MenuItems.insert(pair<char,string>('D',"Can move right?"));
 	m_MenuItems.insert(pair<char,string>('Q',"Quit"));	
 }
 
@@ -103,6 +105,14 @@ void ConsoleMenu::loopMenu(GameBoard &gameBoard, Tetromino &tetromino)
 					cout << "Tetromino::m_gridLocs[" << i << "].col: " << tetromino.returnGridLocs(i,false) << endl;
 				}
 				cout << "Tetromino::inBounds(): " << tetromino.inBounds() << endl;
+				break;
+			case 'D':
+			case 'd':
+				cout << "canMoveLeft returned: " << tetromino.canMoveLeft(1) << endl;
+				break;
+			case 'E':
+			case 'e':
+				cout << "canMoveRight returned: " << tetromino.canMoveRight(1) << endl;
 				break;
 			case 'Q':
 			case 'q':
