@@ -145,7 +145,7 @@ Tetromino::rotateStatus Tetromino::checkClockwise()
 {
 	GameBoard ghostBoard;
 	for(int rows = 0; rows <= 21; rows++) { //Make a copy of the game board
-		for(int cols = 1; cols <= 10; cols++)
+		for(int cols = 0; cols < 10; cols++)
 		{
 			ghostBoard.toggleCell(rows,cols,m_gameBoard->cell(rows,cols),m_gameBoard->cellColor(rows,cols));
 		}

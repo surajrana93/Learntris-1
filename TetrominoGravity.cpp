@@ -35,9 +35,9 @@ bool Tetromino::canGravity()
 {
 	GameBoard ghostBoard;
 	for(int rows = 0; rows <= 21; rows++) { //Make a copy of the game board
-		for(int cols = 1; cols <= 10; cols++)
+		for(int cols = 0; cols < m_gameBoard->returnWidth(); cols++)
 		{
-			ghostBoard.toggleCell(rows,cols,m_gameBoard->cell(rows,cols),m_gameBoard->cellColor(rows,cols));
+			ghostBoard.toggleCell(rows,cols,m_gameBoard->cell(rows,cols),m_gameBoard.cellColor(rows,cols));
 		}
 	}
 	Tetromino ghost(&ghostBoard,m_gridLocs[0].row,m_gridLocs[0].col,m_facing); //and a copy of the Tetromino

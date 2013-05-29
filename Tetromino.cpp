@@ -188,6 +188,3 @@ int Tetromino::returnGridLocs(int n,bool row)
 {
 	if(row) return m_gridLocs[n].row; else return m_gridLocs[n].col;
 }
-
-/**Locking goes here!
-*/

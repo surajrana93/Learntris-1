@@ -20,7 +20,10 @@ GameBoard::GameBoard()
 	for(int rows = m_height; rows >= 0; rows--)
 	{
 		for(int cols = 0; cols < m_width; cols++)
+		{
 			m_grid[rows][cols].state = false;
+			m_grid[rows][cols].cellColor = EMPTY;
+		}
 	}
 	m_workingColor = RED;
 }

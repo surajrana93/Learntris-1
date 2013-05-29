@@ -10,7 +10,8 @@
 	GREEN,
 	YELLOW,
 	ORANGE,
-	RED
+	RED,
+	EMPTY
  };
  
  class GameBoard {

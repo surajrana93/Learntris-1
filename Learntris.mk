@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Chance Rosenthal
-Date                   :=2013-05-28
+Date                   :=2013-05-29
 CodeLitePath           :="/Users/Chance/Library/Application Support/codelite"
 LinkerName             :=g++
 SharedObjectLinkerName :=g++ -dynamiclib -fPIC
@@ -58,7 +58,7 @@ CFLAGS   :=  -g -O0 -Wall $(Preprocessors)
 ## User defined environment variables
 ##
 CodeLiteDir:=/Applications/codelite.app/Contents/SharedSupport/
-Objects0=$(IntermediateDirectory)/main$(ObjectSuffix) $(IntermediateDirectory)/GameBoard$(ObjectSuffix) $(IntermediateDirectory)/GameBoardDiag$(ObjectSuffix) $(IntermediateDirectory)/Tetromino$(ObjectSuffix) $(IntermediateDirectory)/LearntrisTests$(ObjectSuffix) $(IntermediateDirectory)/TetrominoRotation$(ObjectSuffix) $(IntermediateDirectory)/TetrominoGravity$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main$(ObjectSuffix) $(IntermediateDirectory)/GameBoard$(ObjectSuffix) $(IntermediateDirectory)/GameBoardDiag$(ObjectSuffix) $(IntermediateDirectory)/Tetromino$(ObjectSuffix) $(IntermediateDirectory)/LearntrisTests$(ObjectSuffix) $(IntermediateDirectory)/TetrominoRotation$(ObjectSuffix) $(IntermediateDirectory)/TetrominoGravity$(ObjectSuffix) $(IntermediateDirectory)/TetrominoLifeCycle$(ObjectSuffix) 
 
 
 
@@ -141,6 +141,14 @@ $(IntermediateDirectory)/TetrominoGravity$(DependSuffix): TetrominoGravity.cpp
 $(IntermediateDirectory)/TetrominoGravity$(PreprocessSuffix): TetrominoGravity.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/TetrominoGravity$(PreprocessSuffix) "TetrominoGravity.cpp"
 
+$(IntermediateDirectory)/TetrominoLifeCycle$(ObjectSuffix): TetrominoLifeCycle.cpp $(IntermediateDirectory)/TetrominoLifeCycle$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/Users/Chance/Dropbox/Code/LearntrisAgain/Learntris/TetrominoLifeCycle.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/TetrominoLifeCycle$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/TetrominoLifeCycle$(DependSuffix): TetrominoLifeCycle.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/TetrominoLifeCycle$(ObjectSuffix) -MF$(IntermediateDirectory)/TetrominoLifeCycle$(DependSuffix) -MM "TetrominoLifeCycle.cpp"
+
+$(IntermediateDirectory)/TetrominoLifeCycle$(PreprocessSuffix): TetrominoLifeCycle.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/TetrominoLifeCycle$(PreprocessSuffix) "TetrominoLifeCycle.cpp"
+
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
 ##
@@ -168,6 +176,9 @@ clean:
 	$(RM) $(IntermediateDirectory)/TetrominoGravity$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/TetrominoGravity$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/TetrominoGravity$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/TetrominoLifeCycle$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/TetrominoLifeCycle$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/TetrominoLifeCycle$(PreprocessSuffix)
 	$(RM) $(OutputFile)
 	$(RM) "../.build-debug/Learntris"
 
