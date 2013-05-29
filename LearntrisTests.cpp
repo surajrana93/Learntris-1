@@ -15,7 +15,7 @@ ConsoleMenu::ConsoleMenu(){
 
 	m_MenuItems['0'] = "Please select from the following:";
 	m_MenuItems['1'] = "Initialize Tetromino";
-	m_MenuItems.insert(std::pair<char,string>('2',"Drop Tetromino"));
+	m_MenuItems.insert(pair<char,string>('2',"Drop Tetromino"));
 	m_MenuItems.insert(pair<char,string>('3',"Rotate clockwise"));
 	m_MenuItems.insert(pair<char,string>('4',"Rotate counterclockwise"));
 	m_MenuItems.insert(pair<char,string>('5',"rotateStatus cwise"));
@@ -27,6 +27,8 @@ ConsoleMenu::ConsoleMenu(){
 	m_MenuItems.insert(pair<char,string>('B',"Print inBounds()"));
 	m_MenuItems.insert(pair<char,string>('E',"Can move left?"));
 	m_MenuItems.insert(pair<char,string>('D',"Can move right?"));
+	m_MenuItems.insert(pair<char,string>('U',"Fill row 0."));
+	m_MenuItems.insert(pair<char,string>('J',"Run line clear tests & clear row 0."));
 	m_MenuItems.insert(pair<char,string>('Q',"Quit"));	
 }
 
@@ -113,6 +115,18 @@ void ConsoleMenu::loopMenu(GameBoard &gameBoard, Tetromino &tetromino)
 			case 'E':
 			case 'e':
 				cout << "canMoveRight returned: " << tetromino.canMoveRight(1) << endl;
+				break;
+			case 'U':
+			case 'u':
+				for(int i = 0; i < 11; i++)
+				{
+					gameBoard.toggleCell(0,i,1,BLUE);
+				}
+				break;
+			case 'J':
+			case 'j':
+				gameBoard.checkLines();
+				cout << "Lines cleared: " << gameBoard.m_prevLinesCleared;
 				break;
 			case 'Q':
 			case 'q':

@@ -14,8 +14,8 @@ Tetromino::Tetromino(GameBoard *grid)
 {
 	m_gameBoard = grid;
 	m_facing = LEFT;
-	m_gridLocs[0].row = 20;
-	m_gridLocs[0].col = 7;
+	m_gridLocs[0].row = grid->returnHeight() - 2;
+	m_gridLocs[0].col = (grid->returnWidth() / 2) + 2;
 	m_gameBoard->setColor(m_color);
 	updateGridLoc();
 	toggleGridLoc();
@@ -176,6 +176,10 @@ bool Tetromino::inBounds()
 		{
 			return 0;
 		}
+		else if(m_gridLocs[i].row < 0)
+		{
+			return 0;
+		}
 	}
 	return 1;
 }
@@ -184,3 +188,6 @@ int Tetromino::returnGridLocs(int n,bool row)
 {
 	if(row) return m_gridLocs[n].row; else return m_gridLocs[n].col;
 }
+
+/**Locking goes here!
+*/

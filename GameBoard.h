@@ -25,17 +25,29 @@
 		
 		void toggleCell(int,int,color);
 		void toggleCell(int,int,bool,color);
+		
+		
 		int returnHeight();
 		int returnWidth();
+		
+		
 		bool cell(int,int);
+		
+		void rowClear(int);
+		void checkLines();
+		
 		void setColor(color);
 		color cellColor(int,int);
+		
+		void tetroCycle();
 		
 	/*
 	 * Diagnostic functions, located in GameBoardDiag.cpp
 	 * */
 		
 		void printBoard();
+
+		int m_prevLinesCleared;
 
 	protected:
 		

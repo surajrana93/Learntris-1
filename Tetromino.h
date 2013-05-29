@@ -31,8 +31,11 @@
 		Tetromino(GameBoard* grid,int,int,facing);
 		
 		void updateGridLoc();
+		
 		void funcGravity();
 		void doGravity();
+		bool canGravity();
+		
 		void testTetromino();
 		void toggleGridLoc();
 		

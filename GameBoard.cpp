@@ -5,6 +5,9 @@
  * */
 
 #include "GameBoard.h"
+#include <iostream>
+#include <iomanip>
+#include <fstream>
 
 using namespace std;
 
@@ -72,4 +75,50 @@ void GameBoard::setColor(color Color)
 color GameBoard::cellColor(int rows,int cols)
 {
 	return m_grid[rows][cols].cellColor;
+}
+
+void GameBoard::rowClear(int row)
+{
+	for(int col = 0; col < m_width; col++)
+	{
+		toggleCell(row,col,0,cellColor(row,col));
+	}
+}
+
+void GameBoard::checkLines()
+{
+	ofstream os;
+	os.open("lineclearlog.txt");
+	os << "\nInitializing clearCounter";
+	int clearCounter = 0;
+	os  << setw(20) << setfill('.') << right << (clearCounter == 0 ? "OK\n" : "FAIL\n");
+	int row = m_height - 2;
+	while(row >= 0)
+	{
+		bool rowFull = 1;
+		for(int col = 0; col < (m_width - 1); col++)
+		{
+			os << "\nChecking cell (" << row << "," << col << ")";
+			if(!cell(row,col))
+			{
+				rowFull = 0;
+			}
+			os << setw(20) << setfill('.') << right << "SUCCESS\n";
+		}
+		if(rowFull)
+		{
+			os << "\nAttempting to clear row " << row;
+			rowClear(row);
+			clearCounter++;
+			os << setw(20) << setfill('.') << "SUCCESS\n";
+			row--;
+		}
+		else
+		{
+		row--;
+		os << "\nNo need to clear row " << (row + 1) << ".\n";
+		}
+	}
+	m_prevLinesCleared = clearCounter;
+	os.close();
 }
